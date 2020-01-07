@@ -66,10 +66,10 @@ class Game extends React.Component {
 		this.state = {
 			player: Array(2).fill(Array(2)),
 			history: [{ 
-				squares: ['O',null,null,null,'O',null,'O',null,null],
+				squares: ['Z',null,null,null,'Z',null,'Z',null,null],
 			}],
-			turn: 0,
-			player: [['X','X'],['O','O']],
+			turn: 1,
+			player: [['Lichtut','P'],[new Array('AkhilJoshi','Petros Prokopiou','koderproxy')[Math.floor(Math.random()*3)],'Z']],
 			stepNumber:0,
 		}
 		
@@ -90,7 +90,7 @@ class Game extends React.Component {
 	jumpTo(step){
 		this.setState({
 			stepNumber:step,
-			turn: step%2,
+			turn: step%2^1,
 		});
 	}
 	render() {
@@ -105,10 +105,10 @@ class Game extends React.Component {
 				for(let i = 0; i < 2; i++){
 					if(this.state.player[i][1] == winner) name = this.state.player[i][0];
 				}
-				status = 'Winner: ' + name;
+				status = 'Champion: ' + name;
 			}
 		}else{
-			status = 'Next player: '+this.state.player[this.state.turn][1];
+			status = 'Next player: '+this.state.player[this.state.turn][0];
 		}
 		const moves = history.map((step,move) => {
 			const desc = move ?
